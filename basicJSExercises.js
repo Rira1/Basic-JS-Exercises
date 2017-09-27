@@ -45,9 +45,9 @@ HINT: Use substring()
 
 function rotate_string(text) {
   console.log(text);
-  for( var i =0; i<text.length; i++)
-  text=text.substring(1, text.length)+text[0];
-  console.log(text);
+  for( var i = 0; i<text.length; i++){
+  text=text.substring(1, text.length)+ text[0];
+  console.log(text);}
 }
 
 console.log("Rotate String:");
