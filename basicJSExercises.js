@@ -75,13 +75,14 @@ HINT: Use split() and substring()
  --------------------------- */
 
 function protect_email(email) {
-  return "protected email";
+  return email.substring(0,5)+'...'+email.substr(email.indexOf('@'), email.length-1);
+  //return "protected email";
 }
 
 console.log("Protected email:");
 /* Uncomment the following to check */
-  //console.log(protect_email("harry_potter@gmail.com"));
-  //console.log(protect_email("sarah.connor@gmail.com"));
+  console.log(protect_email("harry_potter@gmail.com"));
+  console.log(protect_email("sarah.connor@gmail.com"));
 
 
 
@@ -101,13 +102,14 @@ HINT: Use join(), split() and sort() functions
  --------------------------- */
 
 function alphabetic_order(word) {
-  return "rearranged word";
+return word.split('').sort().join('');
+  //return "rearranged word";
 }
 
 console.log("Alphabetic Order:");
 /* Uncomment the following to check */
-  // console.log(alphabetic_order("webmaster"));
-  // console.log(alphabetic_order("textbook"));
+   console.log(alphabetic_order("webmaster"));
+   console.log(alphabetic_order("textbook"));
 
 
 
@@ -127,12 +129,14 @@ Output:
  --------------------------- */
 
 function remove_duplicates(arr) {
+  var answer = Array.from( new Set(arr));
+  console.log(answer);
   console.log("Duplicates removed from array");
 }
 
 console.log("Remove Duplicate Values:");
 /* Uncomment the following to check */
-  // remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+   remove_duplicates([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
 
 
 /* ---------------------------
@@ -151,6 +155,21 @@ HINT: Use toString() and parseInt() functions
  --------------------------- */
 
 function dash_in_odd(number) {
+var str = number.toString();
+var result = [str[0]];
+
+for(var x=1; x<str.length; x++)
+  {
+    if((str[x-1]%2 === 1)&&(str[x]%2 === 1))
+     {
+      result.push('-', str[x]);
+     }
+    else
+     {
+      result.push(str[x]);
+     }
+  }
+console.log(result.join(''));
   console.log("odd numbers separated by dashes");
 }
 
@@ -175,12 +194,18 @@ HINT: Use Math.ceil() and Math.random()
  --------------------------- */
 
 function guessing_game(guess) {
-  // Get a random integer from 1 to 10 inclusive
-  console.log("matched or unmatched?");
+  var randomNumber = Math.ceil((Math.random() * 10));
+        if (guess == randomNumber) {
+               console.log('Good Work the random number is:  ' + guess + ' too !');
+       } else {
+              console.log('Not matched the random number is: ' + randomNumber);
+      }
+
+  //console.log("matched or unmatched?");
 }
 
 console.log("Guessing Game:");
 /* Uncomment the following to check */
-  // var guess = prompt('Guess the number between 1 and 10 inclusive');
-  // console.log("User guessed: "+ guess);
-  // guessing_game(guess);
+   var guess = prompt('Guess the number between 1 and 10 inclusive');
+   console.log("User guessed: "+ guess);
+    guessing_game(guess);
